@@ -15,7 +15,7 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(
         X,
         y,
-        test_size = 0.2
+        test_size = 0.9
     )
 
     # EDA
@@ -25,9 +25,9 @@ if __name__ == "__main__":
     # Training
     params = {
         "solver": "lbfgs",
-        "max_iter": 10,
+        "max_iter": 3000,
         "multi_class": "auto",
-        "random_state": 2,
+        "random_state": 8888,
     }
     lr = LogisticRegression(**params)
     lr.fit(
@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     # Unit Test
 
-    with mlflow.start_run(run_name = "Second run"):
+    with mlflow.start_run(run_name = "Initial run"):
         mlflow.log_params(params)
 
         mlflow.log_metric("accuracy", accuracy)
